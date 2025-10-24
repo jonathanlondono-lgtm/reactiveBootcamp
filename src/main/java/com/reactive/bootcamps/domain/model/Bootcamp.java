@@ -34,6 +34,23 @@ public class Bootcamp {
         return new Bootcamp(id, name, description, launchDate, duration, capabilities);
     }
 
+    public static Bootcamp createForList(UUID id, String name, String description, LocalDate launchDate, String duration) {
+        return new Bootcamp(id, name, description, launchDate, duration, java.util.List.of(), false);
+    }
+
+    private Bootcamp(UUID id, String name, String description,
+                     LocalDate launchDate, String duration, List<CapabilityRef> capabilities, boolean validate) {
+        if (validate) {
+            validate(name, description, launchDate, duration, capabilities);
+        }
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.launchDate = launchDate;
+        this.duration = duration;
+        this.capabilities = capabilities;
+    }
+
     private void validate(String name, String description, LocalDate launchDate,
                           String duration, List<CapabilityRef> capabilities) {
 

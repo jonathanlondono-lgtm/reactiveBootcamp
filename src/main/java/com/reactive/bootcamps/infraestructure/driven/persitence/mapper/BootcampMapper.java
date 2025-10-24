@@ -16,11 +16,22 @@ public class BootcampMapper {
 
     public static Bootcamp toDomain(BootcampEntity entity) {
         return Bootcamp.create(
+
                 entity.getName(),
                 entity.getDescription(),
                 entity.getLaunchDate(),
                 entity.getDuration(),
                 java.util.List.of() // capabilities vacío
+        );
+    }
+
+    public static Bootcamp toDomainForList(BootcampEntity entity) {
+        return Bootcamp.createForList(
+                entity.getId(),
+                entity.getName(),
+                entity.getDescription(),
+                entity.getLaunchDate(),
+                entity.getDuration()
         );
     }
 }
